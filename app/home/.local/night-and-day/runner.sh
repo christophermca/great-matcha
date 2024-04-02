@@ -1,6 +1,10 @@
 #!/bin/bash
 
-lat=42.4509
-lng=-83.6618
+function runner() {
+local default_lat=42.4509
+local default_lng=-83.6618
 
-$(bash ./.local/night-and-day/src/get-mode.sh $lat $lng)
+$(bash ./.local/night-and-day/src/get-mode.sh ${lat:=$default_lat} ${lng:=$default_lng})
+}
+
+runner
