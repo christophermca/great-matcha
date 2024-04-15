@@ -1,3 +1,11 @@
+getID=$$(docker ps -l --format {{.ID}})
+export getID
+
+all:
+	# getID=$$(docker ps -l --format {{.ID}})
+	# export getID
+	echo $(getID)
+
 build:
 	docker build . -t day_night:latest
 
@@ -8,7 +16,8 @@ run:
 server:
 	docker run -dt day_night:latest bash -c "tail -f /dev/null"
 
-connect:
-	docker exec -it "$$(docker ps -l --format {{.ID}})" | bash
 
-	# docker exec -ti $(id) bash
+connect:
+	bash -c "docker exec -it $(getID) /bin/bash"
+	unset $(getID)
+
