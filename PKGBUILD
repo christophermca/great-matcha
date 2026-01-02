@@ -7,42 +7,20 @@
 pkgname=great-matcha
 pkgver=1.0.0
 pkgrel=1
-epoch=
 pkgdesc="Systemd units checks if dayNight for location. Updates alacritty theme"
-arch=('any')
-source=("https://github.com/christophermca/great-matcha")
+arch=('x86_64')
+url="https://github.com/christophermca/great-matcha"
 license=('GPL')
-groups=()
-depends=('redshift' 'awk' 'bash' 'dbus-monitor')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-noextract=()
-sha256sums=()
-validpgpkeys=()
+depends=('dbus-monitor' 'redshift' 'awk' 'bash' 'dbus-monitor')
+makedepends=('git')
+source=("https://github.com/christophermca/great-matcha")
+md5sums=('SKIP')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname"
 }
