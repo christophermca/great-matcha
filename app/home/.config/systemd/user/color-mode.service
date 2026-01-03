@@ -1,9 +1,12 @@
 [Unit]
-Description="Monitor color mode"
+Description="Toggle themes (day, night) for Alacritty mode"
+Wants=display-manager.service
+After=graphical-session.target
 
 [Service]
-Type=dbus
-BusName=org.freedesktop.portal.Desktop
-ExecStart=@/usr/bin/echo @$
-ExecStop=echo "---_-+++++ Stopped"
+Type=exec
+WorkingDirectory=%h
+ExecStart=%h/.local/alacritty/bin/toggle-mode-on-signal.sh
 
+[Install]
+WantedBy=default.target

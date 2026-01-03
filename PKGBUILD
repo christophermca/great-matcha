@@ -1,10 +1,10 @@
 # Maintainer: Your Name <mca.christopher@gmail.com>
 pkgname=great-matcha
-pkgver=r22.34a094c
+pkgver=r23.64a0de1
 pkgrel=1
 pkgdesc="Systemd units checks if dayNight for location. Updates alacritty theme"
 arch=('x86_64')
-url="great-matcha::https://github.com/christophermca/great-matcha"
+url="https://github.com/christophermca/great-matcha"
 license=('GPL')
 depends=('redshift' 'awk' 'bash')
 makedepends=('git')
@@ -18,4 +18,16 @@ pkgver() {
 
 package() {
   cd "$pkgname"
+  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/color-mode.service "$pkgdir/home/$USER/.config/systemd/user/color-mode.service"
+  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/theme-switcher.service "$pkgdir/home/$USER/.config/systemd/user/theme-switcher.service"
+  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/theme-switcher.target "$pkgdir/home/$USER/.config/systemd/user/theme-switcher.target"
+  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/theme-switcher.timer "$pkgdir/home/$USER/.config/systemd/user/theme-switcher.timer"
+  install -Dm755 $srcdir/$pkgname/app/home/.config/systemd/user/update-gtk-theme.service "$pkgdir/home/$USER/.config/systemd/user/update-gtk-theme.service"
+
+  install -Dm755 $srcdir/$pkgname/app/home/.local/theme-switcher/theme-switcher.sh "$pkgdir/home/$USER/.local/theme-switcher/theme-switcher.sh"
+  install -Dm755 $srcdir/$pkgname/app/home/.local/theme-switcher/bin/get-sunrise-sunset.sh "$pkgdir/home/$USER/.local/theme-switcher/bin/get-sunrise-sunset.sh"
+  install -Dm755 $srcdir/$pkgname/app/home/.local/theme-switcher/bin/update-gdm.sh "$pkgdir/home/$USER/.local/theme-switcher/bin/update-gdm.sh"
+  install -Dm755 $srcdir/$pkgname/app/home/.local/theme-switcher/src/shared-variables.sh "$pkgdir/home/$USER/.local/theme-switcher/src/shared-variables.sh"
+
+
 }
