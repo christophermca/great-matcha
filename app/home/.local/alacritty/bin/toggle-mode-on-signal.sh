@@ -9,8 +9,8 @@ interface="org.freedesktop.portal.Settings"
 type="signal"
 member="SettingChanged"
 
-if [[ -f $HOME/.local/alacritty/bin/toggle-mode-on-signal.sh ]]; then
-  source $HOME/.local/alacritty/bin/toggle-mode-on-signal.sh
+if [[ -f /usr/local/bin/share/alacritty/select-theme.sh ]]; then
+  source /usr/local/bin/share/alacritty/select-theme.sh
 fi
 
 function processOutput() {
