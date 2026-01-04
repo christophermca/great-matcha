@@ -9,6 +9,10 @@ interface="org.freedesktop.portal.Settings"
 type="signal"
 member="SettingChanged"
 
+if [[ -f $HOME/.local/alacritty/bin/toggle-mode-on-signal.sh ]]; then
+  source $HOME/.local/alacritty/bin/toggle-mode-on-signal.sh
+fi
+
 function processOutput() {
     awk '
     $2 ~ "color-scheme" { next }

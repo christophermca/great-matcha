@@ -33,6 +33,6 @@ package() {
   # install -Dm755 $srcdir/$pkgname/app/home/.local/theme-switcher/bin/update-gdm.sh "$pkgdir/home/$USER/.local/theme-switcher/bin/update-gdm.sh"
   install -Dm755 $srcdir/$pkgname/app/home/.local/theme-switcher/src/shared-variables.sh "$pkgdir/home/$USER/.local/theme-switcher/src/shared-variables.sh"
 
-  install -Dm755 $srcdir/$pkgname/app/home/.local/share/theme-switcher/toggle-theme-per-mode.sh "$pkgdir/home/$USER/.local/share/theme-switcher/toggle-theme-per-mode.sh"
+  install -Dm755 $srcdir/$pkgname/app/home/.local/alacritty/bin/toggle-mode-on-signal.sh "$pkgdir/home/$USER/.local/alacritty/bin/toggle-mode-on-signal.sh"
 
 }
